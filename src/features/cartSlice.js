@@ -4,10 +4,10 @@ import cartItems from "../cartItem";
 const initialState = {
 cart:cartItems,
 error:'',
-amount:0,
+totalProduct:0,
+totalCartItems:0,
 totalAmount: 0,
 }
-
 const cartSlice = createSlice({
     name:'cart',
     initialState,
@@ -19,9 +19,7 @@ const cartSlice = createSlice({
             const cartItem= state.cart.find((item)=>item.id===action.payload)
             // console.log(JSON.parse(JSON.stringify(cartItem)))
          cartItem.qty = cartItem.qty + 1
-        //  cartItem.price = cartItem.price * cartItem.qty
         cartItem.total = cartItem.price * cartItem.qty
-        // console.log(JSON.parse(JSON.stringify(cartItem)))
         },
         decrease:(state, action)=>{
             const cartItem = state.cart.find((item)=>item.id===action.payload)
@@ -34,9 +32,20 @@ const cartSlice = createSlice({
         },
         remove:(state, action)=>{
            state.cart =  state.cart.filter((item)=>item.id!==action.payload)
+        },
+        calculateTotals:(state)=>{
+          state.totalProduct=  state.cart.length
+          let items=0;
+          let amounts=0;
+          state.cart.forEach(item=>{
+            items += item.qty
+            amounts += item.qty* item.price
+          })
+          state.totalCartItems = items
+          state.totalAmount = amounts
         }
     }
 })
 
-export const {clearCart, increase, decrease,remove}=cartSlice.actions;
+export const {clearCart, increase, decrease,remove, calculateTotals}=cartSlice.actions;
 export default cartSlice.reducer

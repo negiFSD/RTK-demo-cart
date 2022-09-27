@@ -48,6 +48,32 @@ justify-content: space-around;
   color:#5e5d5c;
   margin-bottom: 40px;
 }
+.f-button{
+  background-color: #E5E9EA;
+  height: 40px;
+  width: 60%;
+  border: none;
+  margin-top: 20px;
+  border-radius: 20px;
+  font-size: larger;
+  color:#302f2f
+}
+
+.f-button:hover{
+  background-color: black;
+  color: white;
+  font-size: larger;
+}
+.f-cart-summary{
+  background-color: #E5E9EA;
+  color:#242424;
+  height: 40px;
+  margin-top: 10px;
+  margin: auto;
+  align-items: center;
+}
+
+
 
 .s-container{
 font-size: 15px;

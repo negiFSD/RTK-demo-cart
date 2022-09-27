@@ -30,3 +30,6 @@ const cartItems = [
   ];
 
   export default cartItems
+
+
+  console.log(JSON.stringify(cartItems))

@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SingleItems from "./SingleItems";
 // import cartItems from "../cartItem";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "../features/cartSlice";
-
+import { calculateTotals, clearCart } from "../features/cartSlice";
 
 function FirstCart() {
  const cartItems =  useSelector((store)=>store.cart)
+ const{totalProduct, totalCartItems, totalAmount} = useSelector((store)=>store.cart)
  const dispatch =  useDispatch()
-
+useEffect(()=>{
+  dispatch(calculateTotals())
+},[dispatch,cartItems.cart])
+ 
+console.log(totalProduct, totalCartItems, totalAmount)
 //  const totalvalue = cartItems.cart[0].total ===undefined ?  console.log(cartItems.cart[0].price):console.log(cartItems.cart[0].total)
  
  return (
@@ -30,14 +34,17 @@ function FirstCart() {
           />
         ))}
         {cartItems.cart.length<1 && <div> No Item in the cart</div>}
-      <button onClick={()=>dispatch(clearCart())}>clear Cart</button>
+        {cartItems.cart.length>1 && <button className="f-button" onClick={()=>dispatch(clearCart())}>Clear Cart</button>}
+      
       </div>
       <div className="f-cart-calculation">
-        <div className="f-titles">Cart counts</div>
-
+        <div className="f-titles">Cart summary</div>
+          <div className="f-cart-summary">Total Products : {totalProduct}</div>
+          <div className="f-cart-summary">Total Cart Items:{totalCartItems}</div>
+          <div className="f-cart-summary">Total Amounts: {totalAmount.toFixed(2)}</div>  
       </div>
-    </div>
+    </div>  
   );
-}
+} 
 
 export default FirstCart;
