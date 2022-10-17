@@ -1,27 +1,26 @@
 import React, { useEffect } from "react";
 import SingleItems from "./SingleItems";
-// import cartItems from "../cartItem";
+
 import { useDispatch, useSelector } from "react-redux";
 import { calculateTotals, clearCart } from "../features/cartSlice";
 
 function FirstCart() {
- const cartItems =  useSelector((store)=>store.cart)
- const{totalProduct, totalCartItems, totalAmount} = useSelector((store)=>store.cart)
- const dispatch =  useDispatch()
+
+ const{totalProduct, totalCartItems,cart, totalAmount} = useSelector((store)=>store.cart)
+
+const dispatch =  useDispatch()
 useEffect(()=>{
   dispatch(calculateTotals())
-},[dispatch,cartItems.cart])
+},[dispatch,cart])
  
 console.log(totalProduct, totalCartItems, totalAmount)
-//  const totalvalue = cartItems.cart[0].total ===undefined ?  console.log(cartItems.cart[0].price):console.log(cartItems.cart[0].total)
  
  return (
    <div className="firstcart-container">
-   {/* {cartItems.cart[0].total ===undefined ?  console.log(cartItems.cart[0].price):console.log(cartItems.cart[0].total) } */}
       <div className="f-cart-items">
         {" "}
         <div className="f-titles">Cart Items</div>
-        {cartItems.cart.map((item) => (
+        {cart.map((item) => (
           <SingleItems
             key={item.id}
             title={item.title}
@@ -30,11 +29,12 @@ console.log(totalProduct, totalCartItems, totalAmount)
             amount={item.amount}
             qty={item.qty}
             id={item.id}
+            color={item.color}
             totalDisplayValue = {item.total ===undefined? item.price:item.total}
           />
         ))}
-        {cartItems.cart.length<1 && <div> No Item in the cart</div>}
-        {cartItems.cart.length>1 && <button className="f-button" onClick={()=>dispatch(clearCart())}>Clear Cart</button>}
+        {cart.length<1 && <div> No Item in the cart</div>}
+        {cart.length>0 && <button className="f-button" onClick={()=>dispatch(clearCart())}>Clear Cart</button>}
       
       </div>
       <div className="f-cart-calculation">

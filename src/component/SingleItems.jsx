@@ -5,9 +5,8 @@ import { MdCancel } from "react-icons/md";
 import { increase, decrease, remove } from "../features/cartSlice";
 import { useDispatch } from "react-redux";
 
-function SingleItems({title,  img,qty, id, totalDisplayValue}) {
+function SingleItems({title,color, img,qty, id, totalDisplayValue}) {
 const dispatch =  useDispatch()
-// console.log(totalDisplayValue)
   return (
     <div className="s-container">
       <img
@@ -17,8 +16,8 @@ const dispatch =  useDispatch()
       <span className="s-values"><p>{title}</p> </span>
       
 
-      <span className="s-values"><p>color</p> </span>
-      
+      <span className="s-values"><p>{color}</p> </span>
+
 
       <span className="s-values">  <div>
         {qty}
@@ -34,7 +33,7 @@ const dispatch =  useDispatch()
       </div>
       </span>
      
-      {/* <p>sdf</p> */}
+    
 
       <span className="s-values"> 
       <p>Rs {totalDisplayValue.toFixed(2)}</p>
