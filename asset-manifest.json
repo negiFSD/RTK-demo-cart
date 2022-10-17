@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/RTK-cart/static/css/main.c36914d4.css",
-    "main.js": "/RTK-cart/static/js/main.e02cd6fa.js",
-    "index.html": "/RTK-cart/index.html",
-    "main.c36914d4.css.map": "/RTK-cart/static/css/main.c36914d4.css.map",
-    "main.e02cd6fa.js.map": "/RTK-cart/static/js/main.e02cd6fa.js.map"
+    "main.css": "/RTK-demo-cart/static/css/main.c36914d4.css",
+    "main.js": "/RTK-demo-cart/static/js/main.e02cd6fa.js",
+    "index.html": "/RTK-demo-cart/index.html",
+    "main.c36914d4.css.map": "/RTK-demo-cart/static/css/main.c36914d4.css.map",
+    "main.e02cd6fa.js.map": "/RTK-demo-cart/static/js/main.e02cd6fa.js.map"
   },
   "entrypoints": [
     "static/css/main.c36914d4.css",
